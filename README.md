@@ -37,6 +37,8 @@
 15. [Movimiento cubo con perilla con P5js](#movimiento-cubo--perilla-p5js) <br>
 16. [Movimiento 1 cubo con 3 perillas. (PROCESSING)](#movimiento-1-cubo-con--3-perillas-processing) <br>
 17. [Movimiento 1 cubo con 3 perillas. (P5JS)](#movimiento-1-cubo-con--3-perillas-p5js) <br>
+18. [INTERFAZ II](InterfazII) <br>
+19. [ARDUINO A PROCESSING](arduino-a-processing) <br>
 
 
 
@@ -1178,8 +1180,8 @@ function mouseReleased() {
 }
 ```
 
-#### INTERFAZ II
-###ARDUINO A PROCESSING
+####[INTERFAZ II](InterfazII) <br>
+###[ARDUINO A PROCESSING](arduino-a-processing) <br>
 
 ###Hola Mundo
 
