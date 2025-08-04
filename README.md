@@ -1180,8 +1180,8 @@ function mouseReleased() {
 }
 ```
 
-####[INTERFAZ II](InterfazII) <br>
-###[ARDUINO A PROCESSING](arduino-a-processing) <br>
+####INTERFAZ-II
+###ARDUINO A PROCESSING
 
 ###Hola Mundo
 
