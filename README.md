@@ -1180,10 +1180,11 @@ function mouseReleased() {
 }
 ```
 
-####INTERFAZ-II
-###ARDUINO A PROCESSING
+#### INTERFAZ-II
 
-###Hola Mundo
+### ARDUINO A PROCESSING
+
+### Hola Mundo
 
 ```js
 void setup() {
