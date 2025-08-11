@@ -1343,16 +1343,15 @@ void loop() {
 }
 ```
 ##### Resistencias para  proyecto Semáforo:
-Para los LEDs Rojos (LED_1 y LED_5):
-
+##### Para los LEDs Rojos (LED_1 y LED_5):
 Usando un voltaje promedio de 2V para el LED rojo.
 Resistencia = (5V - 2V) / 0.02A = 3V / 0.02A = 150 Ω
-Para el LED Amarillo (LED_2):
 
+##### Para el LED Amarillo (LED_2):
 Usando un voltaje promedio de 2.2V para el LED amarillo.
 Resistencia = (5V - 2.2V) / 0.02A = 2.8V / 0.02A = 140 Ω
-Para el LED Verde (LED_3 y LED_4):
 
+##### Para el LED Verde (LED_3 y LED_4):
 Usando un voltaje promedio de 2.4V para el LED verde.
 Resistencia = (5V - 2.4V) / 0.02A = 2.6V / 0.02A = 130 Ω
 
