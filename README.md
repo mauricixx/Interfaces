@@ -40,7 +40,8 @@
 18. [INTERFAZ II](#interfaz-ii)
 19. [ARDUINO A PROCESSING](#arduino-a-processing)
 20. [Hola Mundo](#hola-mundo-1)
-21. [Elipse Interactivo](#interactive-ellipse)
+21. [Blink Led](#blinkled)
+2x. [Elipse Interactivo](#interactive-ellipse)
 
 
 
@@ -1184,7 +1185,7 @@ function mouseReleased() {
 
 #### INTERFAZ-II
 
-### ARDUINO A PROCESSING
+### ARDUINO
 
 ### Hola Mundo
 
@@ -1213,6 +1214,21 @@ void loop(){
 delay(50);
 }
 ```
+#### Qué son los Baudios:
+En Arduino, los baudios (o baud rate) son la velocidad de transmisión de datos en una comunicación serial, medida en bits por segundo (bps).
+
+Por ejemplo, cuando escribes en el código:
+```js
+Serial.begin(9600);
+```
+Eso significa que el Arduino y el dispositivo con el que se comunica (por ejemplo, tu computador a través del monitor serial) intercambian información a 9600 bits por segundo.
+### Puntos clave sobre los baudios en Arduino:
+	•	Baudios ≈ bits por segundo (aunque técnicamente, 1 baudio es 1 cambio de señal por segundo, que normalmente equivale a 1 bit en comunicaciones seriales simples).
+	•	El valor debe coincidir en ambos extremos de la comunicación (Arduino y computador), si no, los datos se verán corruptos.
+	•	Valores comunes: 300, 1200, 2400, 4800, 9600, 19200, 57600, 115200 baudios.
+	•	Si se usa un valor muy alto y el cable o conexión no es buena, puede haber errores en la transmisión.
+
+
 #### Semáforo
 
 ```js
