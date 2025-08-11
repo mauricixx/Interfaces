@@ -1183,16 +1183,16 @@ function mouseReleased() {
 }
 ```
 
-#### INTERFAZ-II
+### INTERFAZ-II
 
-### ARDUINO
+#### ARDUINO
 
-### Hola Mundo
+#### Hola Mundo
 
 ```js
 void setup() {
   Serial.begin(9600); // Inicia la comunicación serie a 9600 bps
-  Serial.println("Hola, Mundo!"); // Envía "Hola, Mundo!" al monitor serie
+  Serial.println("Hola, Mundo!"); // Envía "Hola, Mundo!" al monitor serial
 }
 
 void loop() {
@@ -1222,11 +1222,73 @@ Por ejemplo, cuando escribes en el código:
 Serial.begin(9600);
 ```
 Eso significa que el Arduino y el dispositivo con el que se comunica (por ejemplo, tu computador a través del monitor serial) intercambian información a 9600 bits por segundo.
-### Puntos clave sobre los baudios en Arduino:
+#### Puntos clave sobre los baudios en Arduino:
 	•	Baudios ≈ bits por segundo (aunque técnicamente, 1 baudio es 1 cambio de señal por segundo, que normalmente equivale a 1 bit en comunicaciones seriales simples).
 	•	El valor debe coincidir en ambos extremos de la comunicación (Arduino y computador), si no, los datos se verán corruptos.
 	•	Valores comunes: 300, 1200, 2400, 4800, 9600, 19200, 57600, 115200 baudios.
 	•	Si se usa un valor muy alto y el cable o conexión no es buena, puede haber errores en la transmisión.
+
+El símbolo ≈ significa “aproximadamente igual a”.
+
+Se usa cuando dos valores no son exactamente iguales, pero son muy parecidos o equivalentes en la práctica.
+
+En el caso de los baudios, puse:
+
+Baudios ≈ bits por segundo
+
+Porque, en la mayoría de las comunicaciones seriales simples, un baudio corresponde a un bit por segundo, pero técnicamente no siempre es exacto: en protocolos más complejos, un baudio puede representar más de un bit (o menos, dependiendo del esquema de codificación).
+
+Es como decir: “No son exactamente lo mismo, pero para la mayoría de los casos prácticos en Arduino, podemos tratarlos como iguales.”
+
+#### LED Intermitente (Blink)
+
+```js
+void setup() {  // Configuración inicial (ej: pines como entrada/salida)
+  pinMode(13, OUTPUT);  // Pin 13 como salida
+}
+
+void loop() {   // Se repite infinitamente
+  digitalWrite(13, HIGH);  // Encender LED
+  delay(1000);             // Esperar 1 segundo
+  digitalWrite(13, LOW);   // Apagar LED
+  delay(1000);             // Esperar 1 segundo
+}
+```
+
+####  Control por Pulsador
+Objetivo: Encender un LED solo al presionar un botón.
+Circuito:
+Pulsador en pin 2 (con resistencia pull-down de 10k Ω).
+LED en pin 13.
+```js
+void setup() {
+  pinMode(2, INPUT);  // Botón como entrada
+  pinMode(13, OUTPUT);
+}
+void loop() {
+  if (digitalRead(2) == HIGH) {  // Si se presiona el botón
+    digitalWrite(13, HIGH);
+  } else {
+    digitalWrite(13, LOW);
+  }
+}
+```
+
+#### LED con Potenciómetro 
+Objetivo: Regular brillo de un LED con un potenciómetro.
+Circuito:
+Potenciómetro: Patas extremas a +5V y GND, central a pin A0.
+LED en pin 9 (con resistencia 220 Ω).
+```js
+void setup() {
+  pinMode(9, OUTPUT);  // Pin PWM (símbolo ~)
+}
+void loop() {
+  int valor = analogRead(A0);           // Leer potenciómetro (0-1023)
+  int brillo = map(valor, 0, 1023, 0, 255);  // Convertir a rango PWM
+  analogWrite(9, brillo);               // Ajustar brillo
+}
+```
 
 
 #### Semáforo
@@ -1277,6 +1339,21 @@ void loop() {
   delay(2000); // 2 segundos
 }
 ```
+##### Resistencias para  proyecto Semáforo:
+Para los LEDs Rojos (LED_1 y LED_5):
+
+Usando un voltaje promedio de 2V para el LED rojo.
+Resistencia = (5V - 2V) / 0.02A = 3V / 0.02A = 150 Ω
+Para el LED Amarillo (LED_2):
+
+Usando un voltaje promedio de 2.2V para el LED amarillo.
+Resistencia = (5V - 2.2V) / 0.02A = 2.8V / 0.02A = 140 Ω
+Para el LED Verde (LED_3 y LED_4):
+
+Usando un voltaje promedio de 2.4V para el LED verde.
+Resistencia = (5V - 2.4V) / 0.02A = 2.6V / 0.02A = 130 Ω
+
+-----------------------------------------------------------------
 
 #### Interactive ellipse
 Processing Sketch:
