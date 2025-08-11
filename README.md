@@ -41,8 +41,9 @@
 19. [ARDUINO A PROCESSING](#arduino-a-processing)
 20. [Hola Mundo](#hola-mundo-1)
 21. [Led Intermitente - blink](#led-intermitente-blink)
-22. 
-23. [Elipse Interactivo](#interactive-ellipse)
+22. [Control por pulsador](#control-por-pulsador)
+23. [Led con potenciometro](#led-con-potenciómetro)
+24. [Elipse Interactivo](#interactive-ellipse)
 
 
 
