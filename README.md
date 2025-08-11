@@ -43,7 +43,8 @@
 21. [Led Intermitente - blink](#led-intermitente-blink)
 22. [Control por pulsador](#control-por-pulsador)
 23. [Led con potenciometro](#led-con-potenciómetro)
-24. [Elipse Interactivo](#interactive-ellipse)
+24. [Semáforo](#semáforo)
+25. [Elipse Interactivo](#interactive-ellipse)
 
 
 
