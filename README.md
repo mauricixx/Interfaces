@@ -1357,29 +1357,47 @@ Resistencia = (5V - 2.4V) / 0.02A = 2.6V / 0.02A = 130 Ω
 
 -----------------------------------------------------------------
 
-#### Interactive ellipse
-Processing Sketch:
+#### Interactive ellipse: controlar un circulo en Processing mediante un potenciometro conectado a un Arduino UNO.
+###### Código de Arduino:
+
+```js
+unsigned int ADCValue;
+void setup(){
+    Serial.begin(9600);
+}
+
+void loop(){
+
+ int val = analogRead(0);
+   val = map(val, 0, 300, 0, 255);
+    Serial.println(val);
+delay(50);
+}
+```
+##### Código de Processing:
 
 ```js
 import processing.serial.*;
 
-Serial myPort;  // Create object from Serial class
-static String val;    // Data received from the serial port
+Serial myPort;  // Crear objeto de la clase Serial
+static String val;    // Datos recibidos desde el puerto serial
 int sensorVal = 0;
 
 void setup()
 {
-   size(720, 480);
+  background(0); 
+  //fullScreen(P3D);
+   size(1080, 720);
    noStroke();
   noFill();
-  String portName = "COM5";// Change the number (in this case ) to match the corresponding port number connected to your Arduino. 
+  String portName = "COM5";// Cambia el número (en este caso) para que coincida con el puerto correspondiente conectado a tu Arduino. 
 
-  myPort = new Serial(this, portName, 9600);
+  myPort = new Serial(this, "/dev/cu.usbmodem1101", 9600);
 }
 
 void draw()
 {
-  if ( myPort.available() > 0) {  // If data is available,
+  if ( myPort.available() > 0) {  // Si hay datos disponibles,
   val = myPort.readStringUntil('\n'); 
   try {
    sensorVal = Integer.valueOf(val.trim());
@@ -1387,18 +1405,19 @@ void draw()
   catch(Exception e) {
   ;
   }
-  println(sensorVal); // read it and store it in vals!
+  println(sensorVal); // léelos y guárdalos en vals!
   }  
- background(0);
-  // Scale the mouseX value from 0 to 640 to a range between 0 and 175
+ //background(0);
+  // Escala el valor de mouseX de 0 a 640 a un rango entre 0 y 175
   float c = map(sensorVal, 0, width, 0, 400);
-  // Scale the mouseX value from 0 to 640 to a range between 40 and 300
+  // Escala el valor de mouseX de 0 a 640 a un rango entre 40 y 300
   float d = map(sensorVal, 0, width, 40,500);
   fill(255, c, 0);
   ellipse(width/2, height/2, d, d);   
-
 }
 ```
+
+
 ### Conectar un sensor de distancia Sharp a Arduino, sigue estos pasos:
 
 Materiales:
