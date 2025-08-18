@@ -44,8 +44,7 @@
 22. [Control por pulsador](#control-por-pulsador)
 23. [Led con potenciometro](#led-con-potenciómetro)
 24. [Semáforo](#semáforo)
-25. [Elipse Interactivo](#interactive-ellipse)
-
+25. [Elipse Interactivo](#elipse-interactivo-controlar-un-circulo-en-processing-mediante-un-potenciometro-conectado-a-un-arduino-uno)
 
 
 
