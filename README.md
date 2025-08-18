@@ -1357,7 +1357,7 @@ Resistencia = (5V - 2.4V) / 0.02A = 2.6V / 0.02A = 130 Ω
 
 -----------------------------------------------------------------
 
-#### Interactive ellipse: controlar un circulo en Processing mediante un potenciometro conectado a un Arduino UNO.
+#### Elipse Interactivo: controlar un circulo en Processing mediante un potenciometro conectado a un Arduino UNO.
 ###### Código de Arduino:
 
 ```js
