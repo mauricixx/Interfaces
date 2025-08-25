@@ -1373,6 +1373,23 @@ void loop(){
 delay(50);
 }
 ```
+#####Led +  potenciometro + processing
+
+```js
+unsigned int ADCValue;
+void setup() {
+  Serial.begin(9600);
+  pinMode(9, OUTPUT);  // Pin PWM (símbolo ~)
+}
+void loop() {
+  int val = analogRead(A0);           // Leer potenciómetro (0-1023)
+  int brillo = map(val, 0, 1023, 0, 255);  // Convertir a rango PWM
+  analogWrite(9, brillo);               // Ajustar brillo
+      Serial.println(val);
+delay(50);
+}
+```
+
 ##### Código de Processing:
 
 ```js
