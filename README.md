@@ -1389,9 +1389,11 @@ void setup()
    size(1080, 720);
    noStroke();
   noFill();
-  String portName = "COM5";// Cambia el número (en este caso) para que coincida con el puerto correspondiente conectado a tu Arduino. 
+  String portName = "COM3";// Cambia el número (en este caso) para que coincida con el puerto correspondiente conectado a tu Arduino. 
 
-  myPort = new Serial(this, "/dev/cu.usbmodem1101", 9600);
+  //myPort = new Serial(this, "/dev/cu.usbmodem1101", 9600);
+  myPort = new Serial(this, Serial.list()[0], 9600);
+
 }
 
 void draw()
