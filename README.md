@@ -45,6 +45,8 @@
 23. [Led con potenciometro](#led-con-potenciómetro)
 24. [Semáforo](#semáforo)
 25. [Elipse Interactivo](#elipse-interactivo-controlar-un-circulo-en-processing-mediante-un-potenciometro-conectado-a-un-arduino-uno)
+26. [Arduino + Botón + Processing:](#arduino--botón--processing)
+27. [Arduino + Botón + Potenciometro + Processing:](#arduino--botón--potenciometro--processing)
 
 
 
