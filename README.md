@@ -48,6 +48,7 @@
 26. [Arduino + Botón + Processing:](#arduino--botón--processing)
 27. [Arduino + Botón + Potenciometro + Processing:](#arduino--botón--potenciometro--processing)
 28. [Estructuras de control:](#estructuras-de-control-en-arduino)
+29. [Botonera:](#botonera)
 
 
 
