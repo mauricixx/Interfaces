@@ -1731,10 +1731,11 @@ Es decir, divide dos números y se queda con lo que sobra.
 
 ##### Ejemplo:
 ```js
-5 % 2 = 1   // 5 dividido entre 2 es 2, sobra 1
-6 % 2 = 0   // 6 dividido entre 2 es 3 exacto, sobra 0
-7 % 3 = 1   // 7 dividido entre 3 es 2, sobra 1
-10 % 4 = 2  // 10 dividido entre 4 es 2, sobra 2
+	0 % 2 = 0 → par → LED encendido
+	1 % 2 = 1 → impar → LED apagado
+	2 % 2 = 0 → par → LED encendido
+	3 % 2 = 1 → impar → LED apagado
+
 ```
 ###### ¿Cómo se usa en el código?:
 esta linea:
