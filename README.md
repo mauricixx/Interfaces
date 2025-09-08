@@ -1744,7 +1744,7 @@ if (i % 2 == 0) {
 	•	Eso significa que i es par (0, 2, 4, …).
 	•	Si no es 0, entonces i es impar (1, 3, 5, …).
 
- En tu ejemplo, el % sirve para decidir si el LED que toca en ese momento es par (lo enciende) o impar (lo apaga).
+ En el ejemplo, el % sirve para decidir si el LED que toca en ese momento es par (lo enciende) o impar (lo apaga).
 
 
 ### Conectar un sensor de distancia Sharp a Arduino, sigue estos pasos:
