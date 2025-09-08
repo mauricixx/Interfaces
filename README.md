@@ -1749,7 +1749,7 @@ if (i % 2 == 0) {
 
 
 
- #### Botonera:
+ #### Botonera: 
  ```js
 // --- Configuración de botones ---
 const int numButtons = 3;
