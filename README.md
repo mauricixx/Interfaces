@@ -1,9 +1,9 @@
 ##### Introducción a Processing y Arduino para el desarrollo de una interfaz interactiva  Humano-Máquina (humacchina) como pieza artística.
 
 
-1. [Hola Mundo :)](#hola-mundo) <br> 
-2. [Void Setup()](#void-setup) <br>
-3. [Void Draw()](#void-draw)  <br>
+1. [Void Setup()](#void-setup) <br>
+2. [Void Draw()](#void-draw)  <br>
+3. [Hola Mundo :)](#hola-mundo) <br> 
 4.  [Conceptos Básicos](#conceptos-básicos) <br>
    4.1 [ejemplo](#por-ejemplo) <br>
 5. [Sistema de Coordenada en Processing](#sistema-de-coordenadas-en-processing) <br>
@@ -50,30 +50,6 @@
 28. [Estructuras de control:](#estructuras-de-control-en-arduino)
 29. [Botonera:](#botonera)
 
-
-
-#### HOLA MUNDO:
-
-```js
-void setup() {
-  // Esta función se ejecuta una sola vez al inicio del programa.
-  
-  size(400, 400);
-  // Define el tamaño de la ventana de visualización en 400x400 píxeles.
-  
-  background(255);
-  // Establece el color de fondo de la ventana en blanco (255 en escala de grises).
-  
-  textSize(32);
-  // Define el tamaño de la fuente del texto en 32 píxeles.
-  
-  fill(0);
-  // Establece el color de relleno en negro (0 en escala de grises).
-  
-  text("Hola Mundo", 100, 200);
-  // Dibuja el texto "Hola Mundo" en las coordenadas (100, 200).
-}
-```
 
 ###### **Void Setup()**:
 
@@ -145,6 +121,29 @@ void draw() {
 
 En este ejemplo, setup() se utiliza para configurar la ventana de visualización, el color de fondo, el modo de color y la velocidad de fotogramas. Luego, draw() contiene el código que se ejecuta repetidamente para dibujar en la pantalla.
 Este código crea una ventana de 800x600 píxeles con un fondo blanco y dibuja un círculo negro en la posición del ratón, actualizando la posición del círculo continuamente a medida que el ratón se mueve.
+
+#### HOLA MUNDO:
+
+```js
+void setup() {
+  // Esta función se ejecuta una sola vez al inicio del programa.
+  
+  size(400, 400);
+  // Define el tamaño de la ventana de visualización en 400x400 píxeles.
+  
+  background(255);
+  // Establece el color de fondo de la ventana en blanco (255 en escala de grises).
+  
+  textSize(32);
+  // Define el tamaño de la fuente del texto en 32 píxeles.
+  
+  fill(0);
+  // Establece el color de relleno en negro (0 en escala de grises).
+  
+  text("Hola Mundo", 100, 200);
+  // Dibuja el texto "Hola Mundo" en las coordenadas (100, 200).
+}
+```
 
  ___________________________________________________________________________________________________________________________________
 
