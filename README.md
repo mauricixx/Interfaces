@@ -1725,8 +1725,8 @@ void loop() {
 	4.	Espera 0,5 segundos y sigue al siguiente LED.
 	5.	Al terminar, vuelve a empezar infinitamente.
 
- ##### ¿Qué hace el módulo %?
- Devuelve el resto de una división entera.
+##### ¿Qué hace el módulo %?
+Devuelve el resto de una división entera.
 Es decir, divide dos números y se queda con lo que sobra.
 
 ##### Ejemplo:
@@ -1749,8 +1749,7 @@ if (i % 2 == 0) {
  En el ejemplo, el % sirve para decidir si el LED que toca en ese momento es par (lo enciende) o impar (lo apaga).
 
 
-
- #### Botonera: 
+#### Botonera: 
  ```js
 // --- Configuración de botones ---
 const int numButtons = 3;
