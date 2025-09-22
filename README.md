@@ -1748,8 +1748,8 @@ if (i % 2 == 0) {
  En el ejemplo, el % sirve para decidir si el LED que toca en ese momento es par (lo enciende) o impar (lo apaga).
 
 
-#### Botonera: 
-##### Código Arduino.
+### Botonera: 
+##### Código para Arduino.
  ```js
 // --- Configuración de botones ---
 const int numButtons = 3;
@@ -1819,7 +1819,7 @@ void loop() {
   delay(10);
 }
 ```
-### Botonera ejemplo código para Processing:
+##### Botonera ejemplo código para Processing:
 ```js
 // Importamos librería para comunicación serial
 import processing.serial.*;
