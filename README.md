@@ -1911,6 +1911,15 @@ void playTrack(int index) {
 	•	Si recibe B2:0 → reproduce audio3.mp3.
 	•	Si ya había un audio sonando, lo pausa y arranca el nuevo.
 
+ ```js
+if (state == 0) { // LOW = presionado
+  playTrack(buttonIndex);
+}
+```
+	•	Solo entra cuando el estado es 0 (botón presionado).
+	•	Ignora el state == 1 (cuando se suelta).
+
+
 ⸻
 
 ##### ¿Qué significa 2048?
