@@ -1820,6 +1820,8 @@ void loop() {
 }
 ```
 ##### Botonera ejemplo código para Processing:
+** Guarda tres archivos de audio en la carpeta data: audio1.mp3, audio2.mp3, audio3.mp3.
+
 ```js
 // Importamos librería para comunicación serial
 import processing.serial.*;
@@ -1901,7 +1903,38 @@ void playTrack(int index) {
   currentTrack = index;
 }
 ```
+##### Funcionamiento:
+    •	Arduino: manda B0:0, B1:0, B2:0 cuando presionas los botones.
+	•	Processing:
+	•	Si recibe B0:0 → reproduce audio1.mp3.
+	•	Si recibe B1:0 → reproduce audio2.mp3.
+	•	Si recibe B2:0 → reproduce audio3.mp3.
+	•	Si ya había un audio sonando, lo pausa y arranca el nuevo.
 
+⸻
+
+##### ¿Qué significa 2048?
+##### 2048 corresponde al tamaño del buffer de audio que usa Minim para procesar los datos de sonido.
+```js
+players[0] = minim.loadFile("audio1.mp3", 2048);
+```
+
+##### ¿Qué es un buffer?
+	•	El buffer es como una “ventana” de datos de audio que Minim carga en memoria para procesar el sonido en bloques.
+	•	En este caso, cada bloque contiene 2048 muestras de audio.
+	•	Mientras se reproduce el archivo, Minim va leyendo y cargando bloques de 2048 muestras de manera continua.
+
+##### ¿Por qué 2048?
+	•	Es un valor estándar en procesamiento de audio digital (una potencia de 2).
+	•	Valores más grandes (ej. 4096, 8192) → mayor estabilidad, pero más latencia.
+	•	Valores más pequeños (ej. 512, 1024) → menor latencia, pero más carga para el procesador.
+
+##### En este ejemplo, 2048 es un equilibrio:
+	•	Suficientemente grande para que el audio se reproduzca sin cortes.
+	•	Suficientemente pequeño para que la respuesta al control sea rápida.
+
+##### Si no se especifica nada, Minim usa un valor por defecto (generalmente 1024).
+##### En nuestro caso, se puso explícitamente 2048 para darle un poco más de seguridad y estabilidad al audio.
 ______________________________________________________________________
 
 
