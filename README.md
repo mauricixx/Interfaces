@@ -2043,15 +2043,13 @@ void draw()
 ### Sensor de humedad (DFRobot).
 <img src="https://raw.githubusercontent.com/DFRobot/DFRobotMediaWikiImage/master/Image/Stream_Sensor_CD_UNO.png" width="290" height="173" />
 
-/*******************************
-           Conexión:
-             VCC-5V
-             GND-GND
-             S-Analog pin A0
+Conexión:
+VCC-5V
+GND-GND
+S-Analog pin A0
 
 Puedes ponder el sensor en la palma de tu mano
 para sensar la humedad de  tu palma.
- ********************************/
 
  ```js
 
