@@ -49,6 +49,8 @@
 27. [Arduino + Botón + Potenciometro + Processing:](#arduino--botón--potenciometro--processing)
 28. [Estructuras de control:](#estructuras-de-control-en-arduino)
 29. [Botonera:](#botonera)
+30. [Sensor Sharp:](#conectar-un-sensor-de-distancia-sharp-a-arduino-sigue-estos-pasos)
+31. [Sensor Humedad:](#sensor-de-humedad-dfrobot)
 
 
 ### **Void Setup()**:
