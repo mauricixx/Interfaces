@@ -2065,360 +2065,89 @@ void loop()
   delay(200);
 }
 ```
-#### Piezo
-##### código Processing:
-```js
-import processing.serial.*;
 
-Serial myPort;  // Objeto para la comunicación serial
-int sensorValue = 0;
-
-void setup() {
-  size(400, 400);
-  // Cambia el nombre del puerto por el que estés utilizando en tu sistema
-  String portName = Serial.list()[0];  // Obtener el primer puerto disponible
-  myPort = new Serial(this, "/dev/cu.usbmodem1101", 9600);
-  myPort.bufferUntil('\n');  // Esperar a recibir una línea completa
-}
-
-void draw() {
-  background(255);
-  
-  // Mapeamos el valor del sensor al tamaño del círculo
-  float circleSize = map(sensorValue, 0, 1023, 10, width);
-  
-  // Dibujar el círculo en el centro
-  fill(100, 150, 250);
-  ellipse(width/2, height/2, circleSize, circleSize);
-}
-
-// Función para leer los datos seriales
-void serialEvent(Serial myPort) {
-  String inString = myPort.readStringUntil('\n');  // Leer la línea completa
-  if (inString != null) {
-    inString = trim(inString);  // Eliminar cualquier espacio o carácter no deseado
-    sensorValue = int(inString);  // Convertir la cadena en un número entero
-  }
-}
-```
-código Arduino:
-```js
-int sensorPin = A0;  // Conecta el sensor piezo al pin A0
-int sensorValue = 0;
-
-void setup() {
-  Serial.begin(9600);  // Iniciar la comunicación serial a 9600 baudios
-}
-
-void loop() {
-  sensorValue = analogRead(sensorPin);  // Leer el valor del sensor
-  Serial.println(sensorValue);          // Enviar el valor a Processing
-  delay(100);                           // Esperar un poco antes de la siguiente lectura
-}
-```
-
-#### VIDEO ascii
-```js
-import processing.video.*;
-
-Capture cam;
-String asciiChars = "@%#*+=-:. ";  // Characters from dark to light
-int cols, rows;
-int cellSize = 10; // Size of each ASCII cell
-
-void setup() {
-  size(640, 480);
-  cam = new Capture(this, 640, 480);
-  cam.start();
-  textAlign(CENTER, CENTER);
-  textSize(cellSize);
-  cols = width / cellSize;
-  rows = height / cellSize;
-}
-
-void draw() {
-  if (cam.available() == true) {
-    cam.read();
-  }
-
-  cam.loadPixels();
-  background(0);
-
-  for (int y = 0; y < rows; y++) {
-    for (int x = 0; x < cols; x++) {
-      int pixelX = x * cellSize;
-      int pixelY = y * cellSize;
-      int index = pixelX + pixelY * cam.width;
-      color c = cam.pixels[index];
-      
-      // Calculate brightness and map it to ASCII characters
-      float bright = brightness(c);
-      int charIndex = int(map(bright, 0, 255, asciiChars.length() - 1, 0));
-      String asciiChar = asciiChars.substring(charIndex, charIndex + 1);
-
-      fill(255);
-      text(asciiChar, pixelX + cellSize * 0.5, pixelY + cellSize * 0.5);
-    }
-  }
-}
-```
-
-### Ascii Cam.
-```js
-import processing.video.*;
-
-Capture cam;
-String asciiChars = "@%#*+=-:. ";  // Characters from dark to light
-int cols, rows;
-int cellSize = 10; // Size of each ASCII cell
-
-void setup() {
-  size(640, 480);
-  cam = new Capture(this, 640, 480);
-  cam.start();
-  textAlign(CENTER, CENTER);
-  textSize(cellSize);
-  cols = width / cellSize;
-  rows = height / cellSize;
-}
-
-void draw() {
-  if (cam.available() == true) {
-    cam.read();
-  }
-
-  cam.loadPixels();
-  background(0);
-
-  for (int y = 0; y < rows; y++) {
-    for (int x = 0; x < cols; x++) {
-      int pixelX = x * cellSize;
-      int pixelY = y * cellSize;
-      int index = pixelX + pixelY * cam.width;
-      color c = cam.pixels[index];
-      
-      // Calculate brightness and map it to ASCII characters
-      float bright = brightness(c);
-      int charIndex = int(map(bright, 0, 255, asciiChars.length() - 1, 0));
-      String asciiChar = asciiChars.substring(charIndex, charIndex + 1);
-
-      fill(255);
-      text(asciiChar, pixelX + cellSize * 0.5, pixelY + cellSize * 0.5);
-    }
-  }
-}
-```
-
-#### VIDEO Glitch.
-
-#### Arduino:
-
+###### Promedio de Imágenes.
+### código de Arduino:
 ```js
 void setup() {
   Serial.begin(9600);
 }
 
 void loop() {
-  int pot1 = analogRead(A0);  // Read first potentiometer
-  int pot2 = analogRead(A1);  // Read second potentiometer
-
-  // Send potentiometer values as comma-separated values
-  Serial.print(pot1);
-  Serial.print(",");
-  Serial.println(pot2);
-  
-  delay(50);  // Delay to reduce data rate
+  int potValue = analogRead(A0);
+  Serial.println(potValue);
+  delay(20);
 }
 ```
 
-#### Processing:
+### código de Processing:
 
 ```js
 import processing.serial.*;
-import processing.video.*;
 
-Serial arduinoPort;
-Movie video;
-boolean glitch = false;
-int glitchIntensity = 0; // Adjusts how many pixels are affected
-float glitchFrequency = 0; // Adjusts how frequently glitch is applied
-
-void setup() {
-  size(640, 480);
-  
-  // Set up serial communication
-  arduinoPort = new Serial(this, Serial.list()[0], 9600); // Adjust port if needed
-  
-  // Load video
-  video = new Movie(this, "video.mp4");
-  video.loop();
-}
-
-void draw() {
-  if (video.available()) {
-    video.read();
-  }
-  
-  video.loadPixels();
-  
-  // Apply glitch effect based on potentiometer values
-  if (glitch) {
-    for (int i = 0; i < video.pixels.length; i++) {
-      if (random(1) < glitchFrequency) {
-        video.pixels[i] = color(random(255), random(255), random(255), glitchIntensity);
-      }
-    }
-  }
-  
-  video.updatePixels();
-  image(video, 0, 0, width, height);
-}
-
-// Toggle glitch effect when mouse is pressed
-void mousePressed() {
-  glitch = !glitch;
-}
-
-// Read values from Arduino
-void serialEvent(Serial port) {
-  String data = port.readStringUntil('\n');
-  if (data != null) {
-    String[] values = split(trim(data), ',');
-    
-    if (values.length == 2) {
-      int pot1Value = int(values[0]);
-      int pot2Value = int(values[1]);
-      
-      // Map potentiometer values to control glitch properties
-      glitchIntensity = int(map(pot1Value, 0, 1023, 0, 255));
-      glitchFrequency = map(pot2Value, 0, 1023, 0, 0.1);  // Adjust this for sensitivity
-    }
-  }
-}
-```
-
-#### Glitch
-
-arduino:
-```js
-int sensorPin = A0; // Analog input pin connected to the rotation sensor
-int sensorValue = 0;
+Serial myPort;
+PImage[] imgs;
+int numImages = 3;
+PImage avgImg;
+float mixAmount = 0;
 
 void setup() {
-  Serial.begin(9600); // Initialize serial communication
-}
-
-void loop() {
-  sensorValue = analogRead(sensorPin); // Read sensor value
-  Serial.println(sensorValue); // Send the value to Processing
-  delay(10); // Small delay to stabilize readings
-}
-```
-
-Processing:
-
-```js
-glitch:
-
-import processing.video.*;
-import processing.serial.*;
-
-Serial myPort; // Serial port for Arduino connection
-Capture cam; // Video capture object
-int glitchIntensity = 0;
-
-void setup() {
-  size(640, 480); // Set canvas size
-  cam = new Capture(this, width, height);
-  cam.start();
+  size(800, 600);
+  println(Serial.list());
   
-  // Initialize serial communication with Arduino
-  String portName = Serial.list()[0]; // Replace 0 with the index of your port
-  myPort = new Serial(this, portName, 9600);
+  //Cambia el índice según tu puerto (0, 1, 2, etc.)
+  myPort = new Serial(this, Serial.list()[0], 9600);
+  //myPort = new Serial(this, "/dev/cu.usbmodem1101", 9600);
   myPort.bufferUntil('\n');
+
+  // Cargar imágenes
+  imgs = new PImage[numImages];
+  imgs[0] = loadImage("img1.jpg");
+  imgs[1] = loadImage("img2.jpg");
+  imgs[2] = loadImage("img3.jpg");
+
+  avgImg = createImage(imgs[0].width, imgs[0].height, RGB);
 }
 
 void draw() {
-  if (cam.available() == true) {
-    cam.read();
-  }
-
-  // Display the camera feed with a glitch effect
-  loadPixels();
-  cam.loadPixels();
+  // Dibujar la imagen promedio según el valor del potenciómetro
+  background(0);
+  calcAverage(mixAmount);
+  image(avgImg, 0, 0, width, height);
   
-  for (int y = 0; y < height; y++) {
-    for (int x = 0; x < width; x++) {
-      int index = x + y * width;
-      
-      // Apply glitch effect based on sensor value
-      if (random(100) < glitchIntensity) {
-        // Pixel shift: Select a random nearby pixel to swap color values
-        int glitchIndex = (int) constrain(index + random(-glitchIntensity, glitchIntensity), 0, pixels.length-1);
-        pixels[index] = cam.pixels[glitchIndex];
-      } else {
-        // No glitch, regular pixel
-        pixels[index] = cam.pixels[index];
-      }
-    }
-  }
-  updatePixels();
+  fill(255);
+  textSize(20);
+  text("Mezcla: " + nf(mixAmount, 1, 2), 20, height - 20);
 }
 
-// Event for receiving data from Arduino
-void serialEvent(Serial myPort) {
-  String inString = myPort.readStringUntil('\n'); // Read the serial input
-  if (inString != null) {
-    inString = trim(inString);
-    int sensorValue = int(inString);
-    glitchIntensity = (int) map(sensorValue, 0, 1023, 0, 100); // Map sensor value to glitch intensity
+void serialEvent(Serial p) {
+  String val = p.readStringUntil('\n');
+  if (val != null) {
+    val = trim(val);
+    float sensor = float(val);
+    mixAmount = map(sensor, 0, 1023, 0, 1); // 0 a 1
   }
+}
+
+void calcAverage(float t) {
+  avgImg.loadPixels();
+
+  for (int i = 0; i < avgImg.pixels.length; i++) {
+    color c1 = imgs[0].pixels[i];
+    color c2 = imgs[1].pixels[i];
+    color c3 = imgs[2].pixels[i];
+
+    // Promedio ponderado según el potenciómetro
+    float r = red(c1)*(1-t) + red(c2)*t*0.5 + red(c3)*t*0.5;
+    float g = green(c1)*(1-t) + green(c2)*t*0.5 + green(c3)*t*0.5;
+    float b = blue(c1)*(1-t) + blue(c2)*t*0.5 + blue(c3)*t*0.5;
+
+    avgImg.pixels[i] = color(r, g, b);
+  }
+  avgImg.updatePixels();
 }
 ```
 
-#### Blink Led y sonido.
-```js
-*/
-
-// Definiciones y constantes
-#define pinLed 8 //definimos pin donde se conecta el LED
-#define pinTono 9 //pin PWM~ donde conectamos parlante 
-// ver https://docs.arduino.cc/learn/microcontrollers/analog-output/
-
-int intervalo = 400; //variable para el intervalo de parpadeo
-int frecTono = 432;  //variable para frecuencia del tono (Hz)
-
-void setup() {
-  // función de inicio
-
-  pinMode(pinLed, OUTPUT); // configuramos pinLed como de salida
-  pinMode(pinTono, OUTPUT);  // configuramos pinTono como de salida
-
-}
-
-void loop() {
-  // función de código principal que itera
-
-  digitalWrite(pinLed,HIGH); //enciendo LED
-  tone(pinTono,frecTono); //generamos tono
-  delay(intervalo); //espero un tiempo en ms
-  digitalWrite(pinLed,LOW); //apago LED
-  noTone(pinTono);  //apagamos tono
-  delay(intervalo); //espero un tiempo
-
-  intervalo = intervalo - 10;
-
-  if (intervalo<=0){
-    intervalo = 400;
-  }
-
-  // randomizamos la frecuencia en un rango determinado
-  frecTono = random(150,740);
-
-}
-```
-
-<img src="https://raw.githubusercontent.com/mauricixx/intro_processing/refs/heads/main/img/circuito.jpg" width="1024" height="550" />
 
 
 
