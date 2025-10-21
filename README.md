@@ -2067,7 +2067,7 @@ void loop()
 ```
 #### Cuerpo, vídeo, sensor sharp.
 
-### Código Arduino:
+###### Código Arduino:
 ```js
 // --- Sensor Sharp conectado al pin A0 ---
 int sensorPin = A0;
@@ -2084,7 +2084,7 @@ void loop() {
 }
 ```
 
-### Código Processing:
+##### Código Processing:
 ```js
 // --- Librerías necesarias ---
 import processing.serial.*;
