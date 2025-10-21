@@ -51,6 +51,8 @@
 29. [Botonera:](#botonera)
 30. [Sensor Sharp:](#conectar-un-sensor-de-distancia-sharp-a-arduino-sigue-estos-pasos)
 31. [Sensor Humedad:](#sensor-de-humedad-dfrobot)
+32. [Cuerpo, vídeo, sensor sharp:](#cuerpo-vídeo-sensor-sharp)
+33. [Promedio de Imágenes:](#promedio-de-imágenes)
 
 
 ### **Void Setup()**:
