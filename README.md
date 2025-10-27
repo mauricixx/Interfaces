@@ -53,7 +53,7 @@
 31. [Sensor Humedad:](#sensor-de-humedad-dfrobot)
 32. [Cuerpo, vídeo, sensor sharp:](#cuerpo-vídeo-sensor-sharp)
 33. [Promedio de Imágenes:](#promedio-de-imágenes)
-34. [Promedio de imágenes llamando una carpeta potenciometro]#promedio-de-imágenes-llamando-una-carpeta--potenciometro.
+34. [Promedio de imágenes llamando una carpeta potenciometro:](#promedio-de-imágenes-llamando-una-carpeta--potenciometro)
 
 
 ### **Void Setup()**:
